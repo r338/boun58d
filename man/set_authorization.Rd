@@ -7,11 +7,11 @@
 set_authorization(Key, Sign, file_name)
 }
 \arguments{
-\item{Key:}{Your API key.}
+\item{Key}{Your API key.}
 
-\item{Sign:}{Your API sign.}
+\item{Sign}{Your API sign.}
 
-\item{file_name:}{The file name or file path you want to keep your credentials.}
+\item{file_name}{The file name or file path you want to keep your credentials.}
 }
 \description{
 Set up an authorization credentials file consisting of the Poloniex Key and Sign. You need to have a Poloniex account. Then access your credentials from https://poloniex.com/support/api/ (do not share your keys in any way or medium). The output is an rds file.

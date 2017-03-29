@@ -1,0 +1,189 @@
+api.poloniex.public <- function(command, args = list(Key="DD4NB09B-FVPX0PZB-V167C7WX-4LI0QDAT",Sign="31f15c10518d0390617a7f7c9845324fa3f66be546a9c2bbc7b3eafafeae9421fca0ed680f1c07151d3cf3d89039f6daa9005c90a55fa8e523d1076ded1e60a4")) {#
+  string=paste0("https://poloniex.com/public?command=",command)#
+  print(args)#
+  if(length(args)>0){#
+	for(i in 1:length(args)){#
+		string=paste0(string,'&',names(args)[[i]],'=',args[[i]])#
+	}#
+  }#
+#
+ print(string)#
+  ret <- POST(string)#
+  stop_for_status(ret)#
+  content(ret)#
+}
+require(data.table)#
+library(jsonlite)#
+library(httr)#
+# library(digest)#
+require(zoo)#
+library(tidyverse)
+ethChart=api.poloniex.public("returnChartData", list(currencyPair = "BTC_ETH",start=st,end=st+7200,period=300))
+st=as.numeric(as.POSIXct("2017-01-01 00:00:00 EST"))
+period_value<-300#
+lookback_periods<-4
+ethChart=api.poloniex.public("returnChartData", list(currencyPair = "BTC_ETH",start=st,end=st+7200,period=300))
+ethChart
+get_from_poloniex <- function(info_command,parameters=list(),auth_file=""){#
+#
+    #Check if there is authorization credentials#
+    if(file.exists(auth_file)){#
+        auth_info<-readRDS(auth_file)#
+        auth_string<-paste0(names(auth_info),"=",auth_info,collapse="&")#
+    }else{#
+        #If not return empty string#
+        auth_string<-""#
+    }#
+#
+    if(length(parameters)>0){#
+        par_string <- paste0(names(parameters),"=",parameters,collapse="&")#
+    }else{#
+        par_string <- ""#
+    }#
+#
+    #Prepare http REST request#
+    request_string <- paste0("https://poloniex.com/public?command=",#
+                             info_command,#
+                             ifelse(auth_string=="","",paste0("&",auth_string)),#
+                             ifelse(par_string=="","",paste0("&",par_string)),#
+                             )#
+#
+    #Ask the server#
+    the_answer<-POST(request_string)#
+    #Legen...wait for it#
+    stop_for_status(the_answer)#
+    #Return the answer#
+    return(content(the_answer))#
+}
+get_from_poloniex("returnTicker")
+paste0("https://poloniex.com/public?command=",#
+                             info_command,#
+                             ifelse(auth_string=="","",paste0("&",auth_string)),#
+                             ifelse(par_string=="","",paste0("&",par_string)),#
+                             )
+get_from_poloniex(info_command="returnTicker")
+get_from_poloniex <- function(info_command,parameters=list(),auth_file=""){#
+#
+    paste0("CHECKPOINT")#
+    #Check if there is authorization credentials#
+    if(file.exists(auth_file)){#
+        auth_info<-readRDS(auth_file)#
+        auth_string<-paste0(names(auth_info),"=",auth_info,collapse="&")#
+    }else{#
+        #If not return empty string#
+        auth_string<-""#
+    }#
+#
+    if(length(parameters)>0){#
+        par_string <- paste0(names(parameters),"=",parameters,collapse="&")#
+    }else{#
+        par_string <- ""#
+    }#
+#
+    #Prepare http REST request#
+    request_string <- paste0("https://poloniex.com/public?command=",#
+                             info_command,#
+                             ifelse(auth_string=="","",paste0("&",auth_string)),#
+                             ifelse(par_string=="","",paste0("&",par_string)),#
+                             )#
+#
+    #Ask the server#
+    the_answer<-POST(request_string)#
+    #Legen...wait for it#
+    stop_for_status(the_answer)#
+    #Return the answer#
+    return(content(the_answer))#
+}
+get_from_poloniex(info_command="returnTicker")
+paste0("https://poloniex.com/public?command="
+)
+paste0("https://poloniex.com/public?command=",#
+                             info_command
+)
+get_from_poloniex <- function(info_command,parameters=list(),auth_file=""){#
+#
+    #Check if there is authorization credentials#
+    if(file.exists(auth_file)){#
+        auth_info<-readRDS(auth_file)#
+        auth_string<-paste0(names(auth_info),"=",auth_info,collapse="&")#
+    }else{#
+        #If not return empty string#
+        auth_string<-""#
+    }#
+#
+    if(length(parameters)>0){#
+        par_string <- paste0(names(parameters),"=",parameters,collapse="&")#
+    }else{#
+        par_string <- ""#
+    }#
+#
+    #Prepare http REST request#
+    request_string <- paste0("https://poloniex.com/public?command=",#
+                             info_command,#
+                             ifelse(auth_string=="","",paste0("&",auth_string)),#
+                             ifelse(par_string=="","",paste0("&",par_string))#
+                             )#
+#
+    #Ask the server#
+    the_answer<-POST(request_string)#
+    #Legen...wait for it#
+    stop_for_status(the_answer)#
+    #Return the answer#
+    return(content(the_answer))#
+}
+get_from_poloniex("returnTicker")
+get_from_poloniex("returnTr")
+?POST
+?stop_for_status
+?content
+?readRDS
+setwd("~/git_repositories/boun58d/")
+devtools::use_package("httr","Imports",pkg=".")
+get_from_poloniex("returnTicker")
+sss<-get_from_poloniex("returnTicker")
+typeof(sss)
+auth_string<-""
+par_string <- ""
+info_command<-"returnTicker"
+request_string <- paste0("https://poloniex.com/public?command=",#
+                             info_command,#
+                             ifelse(auth_string=="","",paste0("&",auth_string)),#
+                             ifelse(par_string=="","",paste0("&",par_string))#
+                             )
+the_answer<-httr::POST(request_string)
+httr::stop_for_status(the_answer)
+the_answer
+status(the_answer)
+Status(the_answer)
+http_status(the_answer)
+http_status(the_answer)$category
+the_answer
+typeof(the_answer)
+str(the_answer)
+the_answer$status_code
+the_answer <- data.table::rbindlist(the_answer)
+data.table::rbindlist(content(the_answer))
+devtools::use_package("data.table","Imports",pkg=".")
+roxygen2::roxygenise()
+devtools::install()
+devtools::install()
+library(boun58d)
+get_from_poloniex("returnTradeHistory", list(currencyPair = "BTC_ETH"))
+get_from_poloniex
+getwd()
+devtools::install()
+boun58d::get_from_poloniex("returnTradeHistory", list(currencyPair = "BTC_ETH"))
+roxygen2::roxygenise()
+devtools::install()
+get_from_poloniex("returnTradeHistory", list(currencyPair = "BTC_ETH"))
+get_from_poloniex("returnTradeHistory", list(currencyPair = "BTC_ETH"))
+get_from_poloniex)
+get_from_poloniex
+boun58d::get_from_poloniex("returnTradeHistory", list(currencyPair = "BTC_ETH"))
+?boun58d::get_from_poloniex
+devtools::install_github("r338/boun58d")
+?devtools::install_github
+devtools::install_github("r338/boun58d")
+.Internal()
+old
+setwd("~/git_repositories/boun58d/")
