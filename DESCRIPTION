@@ -1,0 +1,13 @@
+Package: boun58d
+Title: Educational Package for BOUN 58D - Business Analytics course
+Version: 0.0.0.9000
+Authors@R: c(person("Berk", "Orbay", email = "berkorbay@gmail.com", role = c("aut", "cre")),
+            person("Mustafa", "Baydogan", email = "mustafa.baydogan@boun.edu.tr", role = c("aut")))
+Description: Educational material for BOUN 58D - Business Analytics course at Bogazici University, Turkey. This package includes functions to get data from Poloniex as a part of the students\' ongoing prediction projects.
+Depends: R (>= 3.3.3)
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports: httr,
+    data.table
+RoxygenNote: 6.0.1
